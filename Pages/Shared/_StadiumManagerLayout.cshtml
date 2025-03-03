@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<nav>
+    <div class="logo-name">
+        <div class="logo-image">
+            <!--<img src="images/logo.png" alt="">-->
+        </div>
+
+        <span class="logo_name">Stadium Manager Dashboard</span>
+    </div>
+
+    <div class="menu-items">
+        <ul class="nav-links">
+            <li>
+                <a href="~/Dashboards/StadiumManager">
+                    <i style="" class="uil uil-estate"></i>
+                    <span class="link-name">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="~/Dashboards/StadiumManager/StadiumInfo">
+                    @*<i style="margin-right: 10px;"><img src="~/lib/images/club.png"></i>*@
+                    <span class="link-name">Stadium Info</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="logout-mode">
+            <li>
+                <a href="~/Auth/Login">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a>
+            </li>
+        </ul>
+        <ul></ul>
+    </div>
+</nav>
+<section class="dashboard">
+    <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+    </div>
+    <br />
+    <br />
+    @RenderBody()
+</section>
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+}

@@ -1,0 +1,60 @@
+﻿@page
+@model Sports_Management_System.Pages.Dashboards.ClubRepresentative.StadiumsList.IndexModel
+@{
+    Layout = "~/Pages/Shared/_ClubRepLayout.cshtml";
+
+}
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">Available Stadiums</h2>
+    </div>
+    <br />
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            @if (Model.AvailableStadiums.Count() > 0)
+            {
+                <table class="table table-striped border">
+                    <tr class="table table-secondary">
+                        <th>
+                            <label value="Name">Name</label>
+                        </th>
+                        <th>
+                            <label value="Location">Location</label>
+                        </th>
+                        <th>
+                            <label value="Capacity">Capacity</label>
+                        </th>
+                    </tr>
+                    @foreach (var availableStadium in Model.AvailableStadiums)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => availableStadium.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => availableStadium.Location)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => availableStadium.Capacity)
+                            </td>
+                            <td>
+                                @if (! await Model.isRequestRejectedAsync(availableStadium.Name!))
+                                {
+                                    <button asp-route-Stadium=@availableStadium.Name onclick="SendRequest()" class="btn btn-danger">Send Request</button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-danger btn-secondary" disabled>Rejected</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <h4>No Available Stadiums.</h4>
+            }
+        </form>
+    </div>
+</div>

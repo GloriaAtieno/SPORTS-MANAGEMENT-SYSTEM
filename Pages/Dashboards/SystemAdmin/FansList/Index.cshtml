@@ -1,0 +1,32 @@
+﻿@page
+@model Sports_Management_System.Pages.Dashboards.SystemAdmin.FansList.IndexModel
+@{
+    Layout = "~/Pages/Shared/_SysAdminLayout.cshtml";
+}
+
+<br />
+
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">Fans List</h2>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="col-12 border p-3">
+
+        <table id="FansTable" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>PhoneNo</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/systemAdmin/fans.js"></script>
+}
